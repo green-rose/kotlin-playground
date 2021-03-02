@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: eu.karous
+testFramework: junit
+sourceLanguage: kotlin
+buildTool: gradle
+features: [ annotation-api, app-name, gradle, http-client, jackson-xml, junit, kotlin, kotlin-application, logback, netty-server, readme, shade, yaml ]
