@@ -1,12 +1,10 @@
 package eu.karous
 
-import kotlin.system.measureTimeMillis
-
 enum class PasswordStrength(val description: String, val relativeWeakness: Float) {
-   WEAK("weak", 0f),
-   MEDIOCRE("mediocre", 0.5f),
-   STRONG("strong", 0.7f),
-   EXTRA_STRONG("extra strong", 0.9f)
+   WEAK("weak", 0f), //(0-4b)
+   MEDIOCRE("mediocre", 0.4f), //(6-8b)
+   STRONG("strong", 0.7f),//(10-12b)
+   EXTRA_STRONG("extra strong", 0.9f) //(14b)
 }
 
 fun containsSmallLetters(pass: String): Boolean {
@@ -32,11 +30,12 @@ fun passRelativeStrengthChecker(passwordToBeChecked: String): Float {
    if (containsCapitalLetters(passwordToBeChecked)) strength += 2
    if (containsDigits(passwordToBeChecked)) strength += 2
    if (containsSpecialCharacters(passwordToBeChecked)) strength += 2
-
+   println(strength)
    return strength.toFloat() / 14
 }
 
 fun main() {
+
 }
 
 fun passChecker(passwordToBeChecked:String):PasswordStrength {
