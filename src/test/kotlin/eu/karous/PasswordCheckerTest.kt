@@ -10,32 +10,37 @@ class PasswordCheckerTest {
 
     @Test
     fun testPassCheckerWhenPasswordIsShort() {
-        assertEquals(PasswordStrength.WEAK, passChecker("ahoj"))
+        assertEquals(PasswordStrength.WEAK, passChecker("maloznaku"))
     }
 
     @Test
-    fun testPassCheckerWhenPasswordIsShortButVariable() {
-        assertEquals(PasswordStrength.WEAK, passChecker("Ah0!"))
+    fun testPassCheckerWhenPasswordIsVariableButShort() {
+        assertEquals(PasswordStrength.WEAK, passChecker("Mal0!"))
     }
 
     @Test
-    fun testPassCheckerWhenPasswordIsLongButWeak() {
-        assertEquals(PasswordStrength.WEAK, passChecker("ahojpriteli"))
+    fun testPassCheckerWhenPasswordIsLongButSimple() {
+        assertEquals(PasswordStrength.MEDIOCRE, passChecker("jenmaleznaky"))
     }
 
     @Test
     fun testPassCheckerWhenPasswordIsLongWithCapital() {
-        assertEquals(PasswordStrength.MEDIOCRE, passChecker("AhojPriteli"))
+        assertEquals(PasswordStrength.MEDIOCRE, passChecker("znakuPresDeset"))
     }
 
     @Test
-    fun testPassCheckerWhenPasswordIsLongWithCapitalAndDigits() {
+    fun testPassCheckerWhenPasswordIsLongerWithCapitalAndDigits() {
         assertEquals(PasswordStrength.STRONG, passChecker("AhojPriteli12"))
     }
 
     @Test
-    fun testPassCheckerWhenPasswordIsExtraStrong() {
-        assertEquals(PasswordStrength.EXTRA_STRONG, passChecker("AhojPriteli12!"))
+    fun testPassCheckerWhenPasswordIsLongEnoughButWithCapitalAndDigitsOnly() {
+        assertEquals(PasswordStrength.STRONG, passChecker("Password15Znaku"))
+    }
+
+    @Test
+    fun testPassCheckerWhenPasswordIsExtraLongAndWithAllCharVariations() {
+        assertEquals(PasswordStrength.EXTRA_STRONG, passChecker("AhojPriteli12!Muj"))
     }
 
 }
