@@ -4,11 +4,9 @@ import kotlin.math.max
 import kotlin.math.min
 
 // algorithm taken from https://rosettacode.org/wiki/Jaro_distance
-class Jaro {
-    companion object{
-        // lower FINING to get weaker similarity
-        const val FINING: Double = 0.85
-    }
+object JaroStringDistance {
+    // lower FINING to get weaker similarity
+    const val FINING: Double = 0.85
 
     fun distance(s1: String, s2: String): Double {
         val s1Len = s1.length

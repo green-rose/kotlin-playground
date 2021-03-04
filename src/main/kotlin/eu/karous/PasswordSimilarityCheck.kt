@@ -4,11 +4,11 @@ import java.io.File
 import kotlin.system.measureTimeMillis
 
 fun isPassSimilar(passwordToBeChecked:String):Boolean {
-    val jaro = Jaro()
+
     val commonPasswords = readCommonPasswords()
     val timeInMillis = measureTimeMillis {
         commonPasswords.forEach {
-            if(jaro.distance(it,passwordToBeChecked)> Jaro.FINING) {
+            if(JaroStringDistance.distance(it,passwordToBeChecked)> JaroStringDistance.FINING) {
                 return true
             }
         }
